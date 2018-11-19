@@ -3,19 +3,49 @@
 
 <head>
     <title>My first web page</title>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            color: white;
+            background-color: black;
+        }
+
+        h1 {
+            color: orange;
+        }
+
+        #main-header {
+            border-bottom: 5px gray solid;
+        }
+
+        .text-block {
+            margin-left: 30px;
+        }
+    </style>
 </head>
 
 <body>
-    <h1>Hello, Browser!</h1>
-    <p>
+    <h1 id="main-header">Hello, Browser!</h1>
+    <p class="text-block">
         My first web page.
     </p>
 
     Which of these describes you best?
-    <div>
+    <div class="text-block">
         <input type="radio" name="status" value="iknowhtml">I already know HTML
         <input type="radio" name="status" value="imlost">I am absolutely lost
     </div>
+
+    <script>
+        const mainHeader = document.getElementById('main-header')
+        const statusInputs = document.getElementsByName('status')
+        statusInputs.forEach(input =>
+            input.addEventListener('click', e => {
+                const selection = e.target.value
+                mainHeader.innerHTML = selection === 'iknowhtml' ?
+                    "THAT'S GREAT!!!" : "YOU'LL GET IT ALL WITH TIME!!"
+            }))
+    </script>
 </body>
 
 </html>
